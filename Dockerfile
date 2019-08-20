@@ -17,7 +17,7 @@ yum install -y gcc wget curl nginx php72 php72-php-cli php72-php-fpm php72-php-m
     php72-php-mbstring php72-php-curl php72-php-xml php72-php-pear \
     php72-php-bcmath php72-php-json php72-php-common php72-php-opcache \
     php72-php-mysql php72-php-odbc php72-php-pecl-memcached \
-    php72-php-pecl-redis php72-php-pdo php72-php-pecl-apcu php72-php-pecl-apcu-bc; \
+    php72-php-pdo php72-php-pecl-apcu php72-php-pecl-apcu-bc; \
 ln -svf /opt/remi/php72/root/usr/bin/* /usr/bin/; \
 ln -svf /opt/remi/php72/root/usr/sbin/* /usr/sbin/; \
 mkdir /tmp/build; cd /tmp/build; \
@@ -29,7 +29,7 @@ tar -xf phpiredis-v1.0.0.tar.gz; cd phpiredis-1.0.0; phpize; ./configure --enabl
 echo 'extension=phpiredis.so' >> /etc/opt/remi/php72/php.ini; \
 echo "5. config php & nginx"; \
 groupadd -g 900 www; adduser --system --no-user-group -u 1000 -g www www; \
-sed -i 's/;date.timezone = /date.timezone = Asia\/Shanghai/g'           /etc/opt/remi/php72/php.ini; \
+sed -i 's/;date.timezone =/date.timezone = Asia\/Shanghai/g'            /etc/opt/remi/php72/php.ini; \
 sed -i 's/daemonize = yes/daemonize = no/g'                             /etc/opt/remi/php72/php-fpm.conf; \
 sed -i 's/user = apache/user = www/g'                                   /etc/opt/remi/php72/php-fpm.d/www.conf; \
 sed -i 's/group = apache/group = www/g'                                 /etc/opt/remi/php72/php-fpm.d/www.conf; \
